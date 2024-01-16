@@ -1,41 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registrazione</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
     />
   </head>
+
   <body>
-    <div class="container mt-5">
-      <div class="form-group">
-        <label for="nome">Nome:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="nome"
-          placeholder="Inserisci il tuo nome"
-        />
-      </div>
+    <main>
+      <section id="esercizio1">
+        <div class="conteiner mt-5">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-4">
+              <div class="card">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="Password">
+                    </div>
+                    <div class="mb-3 form-check">
+                  </form>
+                  <div class="d-flex justify-content-center pt-3">
+                    <a href="#" class="btn btn-success me-2 px-4">Save</a>
+                    <a href="#" class="btn btn-danger ms-2 px-4">Reset</a>
+                  </div>
 
-      <div class="form-group">
-        <label for="valoreSalvato">Valore precedentemente salvato:</label>
-        <div id="valoreSalvato"></div>
-      </div>
-
-      <button type="button" class="btn btn-primary" onclick="salvaValore()">
-        Salva
-      </button>
-      <button type="button" class="btn btn-danger" onclick="rimuoviValore()">
-        Rimuovi
-      </button>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center mt-4">
+            <div class="col-12 col-md-8 col-lg-4">
+              <h4>Dati salvati:</h4>
+              <p id="datiSalvati"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr>
+      <section id="esercizio2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-8 col-lg-4">
+              <h2 id="secondi"></h2>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -1,40 +1,59 @@
-// PRIMO ESERCIZIO
-function salvaValore() {
-  let nome = document.getElementById("nome").value;
-  localStorage.setItem("nomeSalvato", nome);
-  mostraValoreSalvato();
-}
+//------------------------ PRIMO ESERCIZIO
+const emailInput = document.getElementById("Email");
+const PasswordInput = document.getElementById("Password");
+const buttonSave = document.getElementsByClassName("btn-success")[0];
+const buttonReset = document.getElementsByClassName("btn-danger")[0];
+const paragrafoOutput = document.getElementById("datiSalvati");
 
-// Funzione per rimuovere il valore da localStorage
-function rimuoviValore() {
-  localStorage.removeItem("nomeSalvato");
+const isInputFull = function () {
+  if (emailInput.value.length > 0 && PasswordInput.value.length > 0) {
+    buttonSave.classList.remove("disabled");
+  } else {
+    buttonSave.classList.add("disabled");
+  }
+};
+isInputFull();
+const controllo = setInterval(isInputFull, 100);
+
+buttonSave.addEventListener("click", function () {
+  const datiUtente = {
+    email: emailInput.value,
+    password: PasswordInput.value,
+  };
+  localStorage.setItem("arrayInfoUtente", JSON.stringify(datiUtente));
   mostraValoreSalvato();
-}
+  emailInput.value = "";
+  PasswordInput.value = "";
+});
+
+buttonReset.addEventListener("click", function () {
+  localStorage.removeItem("arrayInfoUtente");
+  mostraValoreSalvato();
+});
 
 function mostraValoreSalvato() {
-  var valoreSalvato = localStorage.getItem("nomeSalvato");
-  var elementoValoreSalvato = document.getElementById("valoreSalvato");
+  let valoreSalvato = localStorage.getItem("arrayInfoUtente");
   if (valoreSalvato) {
-    elementoValoreSalvato.innerHTML = "<strong>" + valoreSalvato + "</strong>";
+    paragrafoOutput.innerHTML = `Email: ${emailInput.value}; <br>
+    Password:*******`;
   } else {
-    elementoValoreSalvato.innerHTML = "";
+    paragrafoOutput.innerHTML = "";
   }
 }
-
 mostraValoreSalvato();
 
 // SECONDO ESERCIZIO
-let secondi = 0;
-const div = document.getElementById("time");
-const p = document.createElement("p");
+let counter = parseInt(sessionStorage.getItem("secondiSalvati")) || 0; //se esiste metti il valore, sennò metti 0 se non esiste all'apertura del tab
+sessionStorage.setItem("secondi", counter);
+const secondi = document.getElementById("secondi");
 
 function timer() {
-  p.innerHTML = `${secondi}`;
-  div.innerHTML = "";
-  div.appendChild(p);
-  secondi++;
+  counter++;
+  sessionStorage.setItem("secondiSalvati", counter);
+  secondi.innerHTML = ` Secondi trascorsi: ${sessionStorage.getItem(
+    "secondiSalvati"
+  )}`;
 }
-
 timer();
 
 const intervallo = setInterval(timer, 1000);
